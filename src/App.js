@@ -1,9 +1,10 @@
+// import { useState } from "react";
 import { ColorModeContext, useMode } from "./theme";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { Routes, Route } from "react-router-dom";
 import Topbar from "./scenes/global/Topbar";
-import Sidebar from "./scenes/global/Sidebar";
-import Dashboard from "./scenes/dashboard";
+import MySidebar from "./scenes/global/Sidebar";
+import Dashboard from "./scenes/dashboard/index";
 // import Team from "./scenes/team";
 // import Contacts from "./scenes/contacts";
 // import Invoices from "./scenes/invoices";
@@ -17,28 +18,29 @@ import Dashboard from "./scenes/dashboard";
 
 function App() {
   const [theme, colorMode] = useMode();
+  // const [isSidebar, setIsSidebar] = useState(true);
+
   return (
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
-        <CssBaseline></CssBaseline>
+         <CssBaseline />
         <div className="app">
-          <Sidebar></Sidebar>
+          <MySidebar />
           <main className="content">
-            <Topbar>
+            <Topbar />
               <Routes>
-                <Route path="/" element={<Dashboard></Dashboard>} />
-                {/* <Route path="/team" element={<Team></Team>} /> */}
-                {/* <Route path="/contacts" element={<Contacts></Contacts>} /> */}
-                {/* <Route path="/invoices" element={<Invoices></Invoices>} /> */}
-                {/* <Route path="/form" element={<Form></Form>} /> */}
-                {/* <Route path="/bar" element={<Bar></Bar>} /> */}
-                {/* <Route path="/pie" element={<Pie></Pie>} /> */}
-                {/* <Route path="/line" element={<Line></Line>} /> */}
-                {/* <Route path="/faq" element={<FAQ></FAQ>} /> */}
-                {/* <Route path="/geography" element={<Geography></Geography>} /> */}
-                {/* <Route path="/calendar" element={<Calendar></Calendar>} /> */}
+                <Route path="/" element={<Dashboard />} />
+                {/* <Route path="/team" element={<Team></Team>} />
+                <Route path="/contacts" element={<Contacts></Contacts>} />
+                <Route path="/invoices" element={<Invoices></Invoices>} />
+                <Route path="/form" element={<Form></Form>} />
+                <Route path="/bar" element={<Bar></Bar>} />
+                <Route path="/pie" element={<Pie></Pie>} />
+                <Route path="/line" element={<Line></Line>} />
+                <Route path="/faq" element={<FAQ></FAQ>} />
+                <Route path="/geography" element={<Geography></Geography>} />
+                <Route path="/calendar" element={<Calendar></Calendar>} /> */}
               </Routes>
-            </Topbar>
           </main>
         </div>
       </ThemeProvider>
