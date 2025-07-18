@@ -5,8 +5,8 @@ import { Routes, Route } from "react-router-dom";
 import Topbar from "./scenes/global/Topbar";
 import MySidebar from "./scenes/global/Sidebar";
 import Dashboard from "./scenes/dashboard/index";
-// import Team from "./scenes/team";
-// import Contacts from "./scenes/contacts";
+import Team from "./scenes/team";
+import Contacts from "./scenes/contacts";
 // import Invoices from "./scenes/invoices";
 // import Form from "./scenes/form";
 // import Bar from "./scenes/bar";
@@ -30,16 +30,16 @@ function App() {
             <Topbar />
               <Routes>
                 <Route path="/" element={<Dashboard />} />
-                {/* <Route path="/team" element={<Team></Team>} />
-                <Route path="/contacts" element={<Contacts></Contacts>} />
-                <Route path="/invoices" element={<Invoices></Invoices>} />
-                <Route path="/form" element={<Form></Form>} />
-                <Route path="/bar" element={<Bar></Bar>} />
-                <Route path="/pie" element={<Pie></Pie>} />
-                <Route path="/line" element={<Line></Line>} />
-                <Route path="/faq" element={<FAQ></FAQ>} />
-                <Route path="/geography" element={<Geography></Geography>} />
-                <Route path="/calendar" element={<Calendar></Calendar>} /> */}
+                <Route path="/team" element={<Team />} /> 
+                <Route path="/contacts" element={<Contacts />} />
+                {/* <Route path="/invoices" element={<Invoices></Invoices>} /> */}
+                {/* <Route path="/form" element={<Form></Form>} /> */}
+                {/* <Route path="/bar" element={<Bar></Bar>} /> */}
+                {/* <Route path="/pie" element={<Pie></Pie>} /> */}
+                {/* <Route path="/line" element={<Line></Line>} /> */}
+                {/* <Route path="/faq" element={<FAQ></FAQ>} /> */}
+                {/* <Route path="/geography" element={<Geography></Geography>} /> */}
+                {/* <Route path="/calendar" element={<Calendar></Calendar>} />  */}
               </Routes>
           </main>
         </div>
