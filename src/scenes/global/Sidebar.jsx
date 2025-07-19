@@ -16,25 +16,29 @@ import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
 
-
-
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-  
+
   return (
-    <Link to={to} style={{ textDecoration: "none", color: colors.grey[700] }}>
-    <MenuItem
-      to={to}
-      active={selected === title}
-      style={{ color: colors.grey[500] }}
-      onClick={() => setSelected(title)}
-      icon={React.cloneElement(icon, {
-        sx: { color: colors.grey[700] },
-      })}
-    >
-      <Typography>{title}</Typography>
-    </MenuItem>
+    <Link to={to} style={{ textDecoration: "none" }}>
+      <MenuItem
+        to={to}
+        active={selected === title}
+        onClick={() => setSelected(title)}
+        icon={React.cloneElement(icon, {
+          sx: { color: colors.grey[700] },
+        })}
+      >
+        <Typography
+          sx={{
+            color: selected === title ? "#6870fa" : colors.grey[700],
+            fontWeight: selected === title ? "bold" : "normal",
+          }}
+        >
+          {title}
+        </Typography>
+      </MenuItem>
     </Link>
   );
 };
@@ -70,7 +74,11 @@ const MySidebar = () => {
         <Menu iconShape="square">
           <MenuItem
             onClick={() => setIsCollapsed(!isCollapsed)}
-            icon={isCollapsed ? <MenuOutlinedIcon sx={{ color: colors.grey[700] }}/> : undefined}
+            icon={
+              isCollapsed ? (
+                <MenuOutlinedIcon sx={{ color: colors.grey[700] }} />
+              ) : undefined
+            }
             style={{
               margin: "10px 0 20px 0",
               color: colors.grey[100],
@@ -91,7 +99,7 @@ const MySidebar = () => {
                   ADMINIS
                 </Typography>
                 <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
-                  <MenuOutlinedIcon sx={{ color: colors.grey[700] }}/>
+                  <MenuOutlinedIcon sx={{ color: colors.grey[700] }} />
                 </IconButton>
               </Box>
             )}
