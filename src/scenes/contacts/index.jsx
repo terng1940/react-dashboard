@@ -9,14 +9,22 @@ import React, { useState, useMemo } from "react";
 const Contacts = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-  const [filterName, setFilterName] = useState("");
+  const [filterText, setFilterText] = useState("");
 
   const filteredRows = useMemo(() => {
-    if (!filterName) return mockDataContacts;
-    return mockDataContacts.filter((row) =>
-      row.name.toLowerCase().includes(filterName.toLowerCase())
+    if (!filterText) return mockDataContacts;
+    const lowercasedFilter = filterText.toLowerCase();
+
+    return mockDataContacts.filter(
+      (row) =>
+        row.name.toLowerCase().startsWith(lowercasedFilter) ||
+        row.email.toLowerCase().startsWith(lowercasedFilter) ||
+        row.phone.toLowerCase().startsWith(lowercasedFilter) ||
+        row.address.toLowerCase().startsWith(lowercasedFilter) ||
+        row.city.toLowerCase().startsWith(lowercasedFilter) ||
+        row.zipCode.toString().startsWith(lowercasedFilter)
     );
-  }, [filterName]);
+  }, [filterText]);
 
   const columns = [
     { field: "id", headerName: "ID", flex: 0.5 },
@@ -70,12 +78,33 @@ const Contacts = () => {
 
       <Box m="10px 0">
         <TextField
-          label="Filter by Name"
+          label="Search anything (ID, Name, Email, etc.)"
           variant="outlined"
           size="small"
-          value={filterName}
-          onChange={(e) => setFilterName(e.target.value)}
-          sx={{ width: "300px" }}
+          value={filterText}
+          onChange={(e) => setFilterText(e.target.value)}
+          sx={{
+            width: "300px",
+            backgroundColor: colors.primary[400], // หรือ #1e1e1e
+            input: { color: colors.grey[100] },
+            "& label": {
+              color: colors.grey[300],
+            },
+            "& label.Mui-focused": {
+              color: colors.greenAccent[400], // สี label ตอน active
+            },
+            "& .MuiOutlinedInput-root": {
+              "& fieldset": {
+                borderColor: colors.grey[300],
+              },
+              "&:hover fieldset": {
+                borderColor: colors.greenAccent[400],
+              },
+              "&.Mui-focused fieldset": {
+                borderColor: colors.greenAccent[300],
+              },
+            },
+          }}
         />
       </Box>
 
